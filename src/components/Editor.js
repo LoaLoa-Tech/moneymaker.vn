@@ -54,7 +54,10 @@ const Editor = ({ type }) => {
           toolbar:
             "undo redo | formatselect | bold italic backcolor | \
              alignleft aligncenter alignright alignjustify | \
-             bullist numlist outdent indent | removeformat | image code link | help",
+             bullist numlist outdent indent | removeformat | image code link paste| help",
+          contextmenu:
+            "paste | link image inserttable | cell row column deletetable",
+          paste_data_images: true,
         }}
         value={data.allPosts[0]?.body}
         onEditorChange={handleEditorChange}
