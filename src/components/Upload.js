@@ -51,9 +51,9 @@ const UploadFile = () => {
           },
         }) => {
           setAlert("...");
-          setTimeout(3000, () => {
+          setTimeout(() => {
             setAlert("");
-          });
+          }, 3000);
           return (
             validity.valid &&
             updateFileUpload({
