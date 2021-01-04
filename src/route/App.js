@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { Fragment } from "react";
 import "./App.css";
-import Content from "./components/Content";
+import Content from "../components/Content";
 import { TradingViewEmbed, widgetType } from "react-tradingview-embed";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
           frameborder="0"
         ></iframe>`;
   return (
-    <div className="App">
+    <Fragment>
       <header className="mb-5">
         <TradingViewEmbed
           widgetType={widgetType.TICKER_TAPE}
@@ -97,7 +97,7 @@ function App() {
           </div>
         </footer>
       </div>
-    </div>
+    </Fragment>
   );
 }
 

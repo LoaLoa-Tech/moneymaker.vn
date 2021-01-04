@@ -4,7 +4,7 @@ import { language } from "..";
 
 const Content = ({ type }) => {
   const isEn = useContext(language);
-  const { data, error, loading } = useQuery(
+  const { data } = useQuery(
     gql`
       query($lang: String, $type: String) {
         allPosts(where: { hashtags_every: { url_in: [$type, $lang] } }) {

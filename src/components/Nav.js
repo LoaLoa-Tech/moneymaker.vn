@@ -51,7 +51,7 @@ const Nav = ({ setIsEn }) => {
                     setIsEn(!isEn);
                   }}
                 >
-                  {isEn ? "chuyển sang Tiếng việt" : "switch to English"}
+                  {isEn ? "Tiếng việt" : "English"}
                 </button>
               </li>
             </ul>

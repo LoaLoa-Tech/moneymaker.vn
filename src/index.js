@@ -5,6 +5,7 @@ import Layout from "./Layout";
 import reportWebVitals from "./reportWebVitals";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const client = new ApolloClient({
   uri: "https://api.loaloa.tech/admin/api",
@@ -14,7 +15,9 @@ export const language = React.createContext("en");
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <Layout language={language} />
+      <Router>
+        <Layout language={language} />
+      </Router>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
