@@ -9,6 +9,9 @@
 .text-primary {
   color: #282d32 !important;
 }
+iframe {
+  width: 100%;
+}
 .copyright > a {
   color: white;
 }
