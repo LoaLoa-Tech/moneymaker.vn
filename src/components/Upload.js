@@ -49,18 +49,24 @@ const UploadFile = () => {
             validity,
             files: [file],
           },
-        }) =>
-          validity.valid &&
-          updateFileUpload({
-            variables: { file, id: data?.allFileUploads[0]?.id },
-          })
-            .then(() => {
-              setAlert("Tải lên thành công");
+        }) => {
+          setAlert("...");
+          setTimeout(3000, () => {
+            setAlert("");
+          });
+          return (
+            validity.valid &&
+            updateFileUpload({
+              variables: { file, id: data?.allFileUploads[0]?.id },
             })
-            .catch((e) => {
-              setAlert("Lỗi " + e.toString());
-            })
-        }
+              .then(() => {
+                setAlert("Tải lên thành công");
+              })
+              .catch((e) => {
+                setAlert("Lỗi " + e.toString());
+              })
+          );
+        }}
       />
       <pre>{alert}</pre>
       <pre>{data?.allFileUploads[0]?.file?.originalFilename}</pre>
