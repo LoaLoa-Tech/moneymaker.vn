@@ -6,9 +6,26 @@ import reportWebVitals from "./reportWebVitals";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router } from "react-router-dom";
-
-const client = new ApolloClient({
-  uri: "https://api.loaloa.tech/admin/api",
+import { HttpLink } from "@apollo/client/link/http";
+import { setContext } from "@apollo/client/link/context";
+const httpLink = new HttpLink({
+  uri:
+    process.env.NODE_ENV === "production"
+      ? "https://api.loaloa.tech/admin/api"
+      : "https://api.loaloa.tech/admin/api",
+  credentials: "same-origin",
+});
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+export const client = new ApolloClient({
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 export const language = React.createContext("en");
