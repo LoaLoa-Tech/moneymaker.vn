@@ -8,7 +8,8 @@ import { ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import { HttpLink } from "@apollo/client/link/http";
 import { setContext } from "@apollo/client/link/context";
-const httpLink = new HttpLink({
+import { createUploadLink } from "apollo-upload-client";
+const httpLink = new createUploadLink({
   uri:
     process.env.NODE_ENV === "production"
       ? "https://api.loaloa.tech/admin/api"
